@@ -1,7 +1,15 @@
-//16-06-2022
+//17-06-2022
 #include <iostream>
 #include <fstream>
+#include <crtdbg.h>
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
 using namespace std;
+#ifndef _DEBUG
+#define new new(_CLIENT_BLOCK,__FILE__,__LINE)
+#endif
+
 
 //for qsort library //data type is double
 int compare(const void* a, const void* b) 
@@ -70,6 +78,8 @@ void mergeSort(T* arr, int start, int end)
 }
 int main()
 {
+	_CrtDumpMemoryLeaks();
+	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	ifstream scores("sort1.txt"); //execution score
 	double d;
 	int studentNumber = 37;
@@ -126,6 +136,7 @@ int main()
 		cout << ix + 1 << ": " << dd2[ix] << '\n';
 	}
 	cout << "\n\n\n";
+	delete[] dd, dd2;
 
 	int array[7] = {3,3,1,2,4,9,1};
 	cout << "\n\nBefore sorting integers' array\n";
@@ -144,7 +155,7 @@ int main()
 	cout << "\n\nBefore sorting string\n";
 	cout << str<<'\n';
 	mergeSort(str, 0, 8);
-	cout << "\n\Sorted string\n";
+	cout << "\n\nSorted string\n";
 	cout << str<<'\n';
 
 	return 0;

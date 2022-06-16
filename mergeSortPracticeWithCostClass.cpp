@@ -157,6 +157,6 @@ int main()
 	mergeSort(str, 0, 8);
 	cout << "\n\nSorted string\n";
 	cout << str<<'\n';
-
+	//no memory leaks now
 	return 0;
 }
